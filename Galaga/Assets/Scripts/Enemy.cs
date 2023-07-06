@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     
-    public float speed = 1.0f;
+    public float speed = 5.0f;
     private Rigidbody enemyRigidBody;
     ///////////////////////////////////////////////////////////////
     public GameObject enemyBulletPrefab;
@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
 
         enemyRigidBody.velocity = transform.forward * speed;
 
-        Destroy(gameObject, 8.0f);
+        Destroy(gameObject, 30.0f);
         ///////////////////////////////////////////////////////////////
         timeAfterSpawn = 0f;
         spawnRate = Random.Range(spawnRateMin, spawnRateMax);
@@ -42,7 +42,6 @@ public class Enemy : MonoBehaviour
             bullet.transform.LookAt(target);
             spawnRate = Random.Range(spawnRateMin, spawnRateMax);
         }
-
     }
     ///////////////////////////////////////////////////////////////
     private void OnTriggerEnter(Collider other)

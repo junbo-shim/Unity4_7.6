@@ -32,7 +32,13 @@ public class PlayerBullet : MonoBehaviour
             if (enemy != null)
             {
                 enemy.Die();
+                Die();
             }
         }
+    }
+
+    public void Die()
+    {
+        gameObject.SetActive(false);
     }
 }
