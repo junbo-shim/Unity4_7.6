@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
-    public float speed = 10.0f;
+    public float speed = 15.0f;
     private Rigidbody playerBulletRigidBody;
+    public GameObject Effect;
 
     // Start is called before the first frame update
     void Start()
@@ -31,14 +32,15 @@ public class PlayerBullet : MonoBehaviour
 
             if (enemy != null)
             {
+                Instantiate(Effect, transform.position, transform.rotation);
                 enemy.Die();
-                Die();
+                Destroy(gameObject, 0f);
             }
         }
     }
 
-    public void Die()
-    {
-        gameObject.SetActive(false);
-    }
+    //public void Die()
+    //{
+    //    gameObject.SetActive(false);
+    //}
 }

@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  Effect: {fileID: 1815674953670559237, guid: e96173196f5de0a4b88f8fb2b6c675d6, type: 3}
   enemyBulletPrefab: {fileID: 4568479951160234934, guid: c8ed4afded59adb45b3961e348894c6b, type: 3}
   spawnRateMin: 0.5
   spawnRateMax: 2
@@ -212,7 +213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d8cf9ba52095a4f4bb35e68774cfa634, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d8cf9ba52095a4f4bb35e68774cfa634, type: 3}
       propertyPath: m_LocalPosition.z

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    public float speed = 10.0f;
+    public float speed = 6.0f;
     private Rigidbody enemyBulletRigidBody;
+    public GameObject Effect;
 
     // Start is called before the first frame update
     void Start()
@@ -14,7 +15,7 @@ public class EnemyBullet : MonoBehaviour
 
         enemyBulletRigidBody.velocity = transform.forward * speed;
 
-        Destroy(gameObject, 5.0f);
+        Destroy(gameObject, 4.0f);
     }
 
     // Update is called once per frame
@@ -31,6 +32,7 @@ public class EnemyBullet : MonoBehaviour
 
             if (playerController != null)
             {
+                Instantiate(Effect, transform.position, transform.rotation);
                 playerController.Die();
             }
         }

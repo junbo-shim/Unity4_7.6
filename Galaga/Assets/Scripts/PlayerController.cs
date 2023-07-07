@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float bulletSpeed = 5.0f;
     ///////////////////////////////////////////////////////////////
     public GameObject playerBulletPrefab;
+    
 
     // Start is called before the first frame update
     void Start()

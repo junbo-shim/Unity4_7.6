@@ -5,14 +5,16 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     
-    public float speed = 5.0f;
+    public float speed = 4.5f;
     private Rigidbody enemyRigidBody;
+    public GameObject Effect;
+
     ///////////////////////////////////////////////////////////////
     public GameObject enemyBulletPrefab;
-    public float spawnRateMin = 0.5f;
-    public float spawnRateMax = 2f;
+    public float spawnRateMin = 6.0f;
+    public float spawnRateMax = 10.0f;
 
-    private Transform target;
+    [SerializeField] private Transform target;
     private float spawnRate;
     private float timeAfterSpawn;
     ///////////////////////////////////////////////////////////////
@@ -52,6 +54,7 @@ public class Enemy : MonoBehaviour
 
             if (playerController != null)
             {
+                Instantiate(Effect, transform.position, transform.rotation);
                 playerController.Die();
             }
         }
@@ -60,6 +63,7 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         gameObject.SetActive(false);
+        GameManager.killCount ++;
     }
 
 }

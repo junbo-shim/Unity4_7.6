@@ -7,9 +7,17 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject gameoverText;
-    public Text timeText;
-    public Text recordText;
+    public PlayerBullet playerBullet;
 
+    public Text timeText;
+    public Text timeRecordText;
+
+
+    public Text KillCountText;
+    public Text KillRecordText;
+
+
+    public static int killCount;
     private float surviveTime;
     private bool isGameover;
 
@@ -18,6 +26,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         surviveTime = 0;
+        killCount = 0;
         isGameover = false;
     }
 
@@ -28,13 +37,14 @@ public class GameManager : MonoBehaviour
         {
             surviveTime += Time.deltaTime;
             timeText.text = "Time: " + (int)surviveTime;
+
+            KillCountText.text = "Score: " + killCount;
         }
-        else 
+
+
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            if (Input.GetKeyDown(KeyCode.R)) 
-            {
-                SceneManager.LoadScene("SampleScene");
-            }
+            SceneManager.LoadScene("PlayScene");
         }
     }
 
@@ -45,6 +55,7 @@ public class GameManager : MonoBehaviour
         gameoverText.SetActive(true);
 
         float bestTime = PlayerPrefs.GetFloat("BestTime");
+        int bestScore = PlayerPrefs.GetInt("BestScore");
         
         if(surviveTime > bestTime) 
         {
@@ -52,7 +63,15 @@ public class GameManager : MonoBehaviour
 
             PlayerPrefs.SetFloat("BestTime", bestTime);
         }
+        if(killCount > bestScore) 
+        {
+            bestScore = killCount;
 
-        recordText.text = "Best Time: " +  (int)bestTime;
+            PlayerPrefs.SetFloat("BestScore", bestScore);
+        }
+
+        timeRecordText.text = "Best Time: " +  (int)bestTime;
+
+        KillRecordText.text = "Best Score: " + bestScore;
     }
 }

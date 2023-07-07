@@ -9,6 +9,7 @@ public class EnemyRespawner : MonoBehaviour
     // Enemy 그룹을 생성해서 내려보낼 출발점 1, 2
     public GameObject enemyRespawnPoint1;
     public GameObject enemyRespawnPoint2;
+    public PlayerController playerController; 
 
     // 불러올 Enemy 개체
     public GameObject enemyPrefab;
@@ -98,6 +99,11 @@ public class EnemyRespawner : MonoBehaviour
         {
             timeAfterSpawn = 0f;
 
+            if (playerController == null)
+            {
+                Destroy(gameObject, 0f);
+            }
+
 
 
             // 중첩 for문 - 좌측 스폰
@@ -135,9 +141,8 @@ public class EnemyRespawner : MonoBehaviour
             }
             startSpawnLocation2 = new Vector3(0.5f, 0.5f, 13.5f);
 
-
-
             spawnRate = Random.Range(spawnRateMin, spawnRateMax);
+            
         }
     }
 }
